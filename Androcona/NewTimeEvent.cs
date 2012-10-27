@@ -9,18 +9,18 @@ using System.Windows.Forms;
 
 namespace Androcona
 {
-    public partial class MainForm : Form
+    public partial class NewTimeEvent : Form
     {
-        public MainForm()
+        public NewTimeEvent()
         {
             InitializeComponent();
+
         }
 
-        private void NewTimeEventButton_Click(object sender, EventArgs e)
+        private void SetButton_Click(object sender, EventArgs e)
         {
-            NewTimeEvent nt = new NewTimeEvent();
-            //nt.Activate();
-            nt.Show();
+            Program.timeEvents.Add(new Alarm(alarmTimePicker.Value));
+            this.Close();
         }
     }
 }
