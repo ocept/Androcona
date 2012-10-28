@@ -16,9 +16,16 @@ namespace Androcona
         }
         public void alarmInit()
         {
-            System.Timers.Timer eTimer = new System.Timers.Timer(alarmTime.Subtract(DateTime.Now).TotalMilliseconds);
-            eTimer.Elapsed += new System.Timers.ElapsedEventHandler(eTimer_Elapsed);
-            eTimer.Start();
+            try
+            {
+                System.Timers.Timer eTimer = new System.Timers.Timer(alarmTime.Subtract(DateTime.Now).TotalMilliseconds);
+                eTimer.Elapsed += new System.Timers.ElapsedEventHandler(eTimer_Elapsed);
+                eTimer.Start();
+            }
+            catch (System.ArgumentException)
+            {
+                return; //invalid time input
+            }
         }
         public DateTime AlarmTime { get { return alarmTime; } set{} }
         void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
