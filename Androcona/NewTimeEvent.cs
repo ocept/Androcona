@@ -20,6 +20,7 @@ namespace Androcona
         private void SetButton_Click(object sender, EventArgs e)
         {
             Program.timeEvents.Add(new Alarm(alarmTimePicker.Value));
+            Program.TheMainForm.updateDisplay();
             this.Close();
         }
     }

@@ -20,7 +20,7 @@ namespace Androcona
             eTimer.Elapsed += new System.Timers.ElapsedEventHandler(eTimer_Elapsed);
             eTimer.Start();
         }
-
+        public DateTime AlarmTime { get { return alarmTime; } set{} }
         void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             System.Windows.Forms.MessageBox.Show("Alarm triggered");

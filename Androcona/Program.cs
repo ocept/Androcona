@@ -11,13 +11,14 @@ namespace Androcona
         /// The main entry point for the application.
         /// </summary>   
         public static List<Alarm> timeEvents = new List<Alarm>();
-
+        public static MainForm TheMainForm = new MainForm();
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            //Application.SetCompatibleTextRenderingDefault(false);
+            
+            Application.Run(TheMainForm);
         }
     }
 }

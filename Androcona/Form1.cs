@@ -16,10 +16,19 @@ namespace Androcona
             InitializeComponent();
         }
 
+        public void updateDisplay()
+        {
+            timeEventsListView.Items.Clear();
+            foreach (Alarm al in Program.timeEvents)
+            {
+                ListViewItem item = new ListViewItem(al.ToString());
+                item.SubItems.Add(al.AlarmTime.ToLongTimeString());
+                timeEventsListView.Items.Add(item);
+            }
+        }
         private void NewTimeEventButton_Click(object sender, EventArgs e)
         {
             NewTimeEvent nt = new NewTimeEvent();
-            //nt.Activate();
             nt.Show();
         }
     }
