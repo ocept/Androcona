@@ -8,17 +8,17 @@ namespace Androcona
 {
     class Alarm
     {
-        protected DateTime alarmTime;
-        public Alarm(DateTime time)
+        protected AlarmSettings alarmSettings;
+        public Alarm(AlarmSettings settings)
         {
-            alarmTime = time;
+            alarmSettings = settings;
             alarmInit();
         }
         public void alarmInit()
         {
             try
             {
-                System.Timers.Timer eTimer = new System.Timers.Timer(alarmTime.Subtract(DateTime.Now).TotalMilliseconds);
+                System.Timers.Timer eTimer = new System.Timers.Timer(alarmSettings.time.Subtract(DateTime.Now).TotalMilliseconds);
                 eTimer.Elapsed += new System.Timers.ElapsedEventHandler(eTimer_Elapsed);
                 eTimer.Start();
             }
@@ -27,8 +27,8 @@ namespace Androcona
                 return; //invalid time input
             }
         }
-        public DateTime AlarmTime { get { return alarmTime; } set{} }
-        void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        public DateTime AlarmTime { get { return alarmSettings.time; } set{} }
+        private void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             System.Windows.Forms.MessageBox.Show("Alarm triggered");
         }
@@ -36,7 +36,7 @@ namespace Androcona
     }
     class Chime : Alarm
     {
-        public Chime(DateTime time) : base(time)
+        public Chime(AlarmSettings settings) : base(settings)
         {
 
         }

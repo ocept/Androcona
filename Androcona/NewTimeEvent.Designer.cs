@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.alarmTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SetButton = new System.Windows.Forms.Button();
             this._CancelButton = new System.Windows.Forms.Button();
             this.timeLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.descriptionTextbox = new System.Windows.Forms.TextBox();
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.TypeCombo = new System.Windows.Forms.ComboBox();
             this.TypeLabel = new System.Windows.Forms.Label();
+            this.aTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.aTypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // alarmTimePicker
@@ -77,12 +80,12 @@
             this.timeLabel.Text = "Time:";
             this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
+            // descriptionTextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 75);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(268, 20);
-            this.textBox1.TabIndex = 4;
+            this.descriptionTextbox.Location = new System.Drawing.Point(86, 75);
+            this.descriptionTextbox.Name = "descriptionTextbox";
+            this.descriptionTextbox.Size = new System.Drawing.Size(268, 20);
+            this.descriptionTextbox.TabIndex = 4;
             // 
             // DescriptionLabel
             // 
@@ -98,13 +101,9 @@
             // 
             this.TypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypeCombo.FormattingEnabled = true;
-            this.TypeCombo.Items.AddRange(new object[] {
-            "Alarm",
-            "Chime"});
             this.TypeCombo.Location = new System.Drawing.Point(86, 12);
             this.TypeCombo.Name = "TypeCombo";
             this.TypeCombo.Size = new System.Drawing.Size(187, 21);
-            this.TypeCombo.Sorted = true;
             this.TypeCombo.TabIndex = 6;
             // 
             // TypeLabel
@@ -116,6 +115,10 @@
             this.TypeLabel.Text = "Type:";
             this.TypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // aTypeBindingSource
+            // 
+            this.aTypeBindingSource.DataSource = typeof(Androcona.AlarmSettings.aType);
+            // 
             // NewTimeEvent
             // 
             this.AcceptButton = this.SetButton;
@@ -125,13 +128,14 @@
             this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.TypeCombo);
             this.Controls.Add(this.DescriptionLabel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.descriptionTextbox);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this._CancelButton);
             this.Controls.Add(this.SetButton);
             this.Controls.Add(this.alarmTimePicker);
             this.Name = "NewTimeEvent";
             this.Text = "NewTimeEvent";
+            ((System.ComponentModel.ISupportInitialize)(this.aTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,10 +147,11 @@
         private System.Windows.Forms.Button SetButton;
         private System.Windows.Forms.Button _CancelButton;
         private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox descriptionTextbox;
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.Label TypeLabel;
         private System.Windows.Forms.ComboBox TypeCombo;
+        private System.Windows.Forms.BindingSource aTypeBindingSource;
 
     }
 }
