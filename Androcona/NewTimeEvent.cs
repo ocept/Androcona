@@ -14,14 +14,23 @@ namespace Androcona
         public NewTimeEvent()
         {
             InitializeComponent();
-
+            this.TypeCombo.SelectedIndex = 0;
         }
 
         private void SetButton_Click(object sender, EventArgs e)
         {
-            Program.timeEvents.Add(new Alarm(alarmTimePicker.Value));
+            if (TypeCombo.SelectedIndex == 0) //Alarm
+            {
+                Program.timeEvents.Add(new Alarm(alarmTimePicker.Value));
+            }
             Program.TheMainForm.updateDisplay();
             this.Close();
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
