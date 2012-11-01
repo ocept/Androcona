@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.alarmTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SetButton = new System.Windows.Forms.Button();
             this._CancelButton = new System.Windows.Forms.Button();
@@ -37,13 +36,17 @@
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.TypeCombo = new System.Windows.Forms.ComboBox();
             this.TypeLabel = new System.Windows.Forms.Label();
-            this.aTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.aTypeBindingSource)).BeginInit();
+            this.chimeTimeLabel = new System.Windows.Forms.Label();
+            this.chimeEndTimeLabel = new System.Windows.Forms.Label();
+            this.chimeEndTimeTextbox = new System.Windows.Forms.MaskedTextBox();
+            this.chimePanel = new System.Windows.Forms.Panel();
+            this.chimeIntervalTextbox = new System.Windows.Forms.MaskedTextBox();
+            this.chimePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // alarmTimePicker
             // 
-            this.alarmTimePicker.CustomFormat = "HH:MM -- dd/MMM/yyy";
+            this.alarmTimePicker.CustomFormat = "HH:mm -- dd/MMM/yyy";
             this.alarmTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.alarmTimePicker.Location = new System.Drawing.Point(86, 42);
             this.alarmTimePicker.Name = "alarmTimePicker";
@@ -105,6 +108,7 @@
             this.TypeCombo.Name = "TypeCombo";
             this.TypeCombo.Size = new System.Drawing.Size(187, 21);
             this.TypeCombo.TabIndex = 6;
+            this.TypeCombo.SelectedIndexChanged += new System.EventHandler(this.TypeCombo_SelectedIndexChanged);
             // 
             // TypeLabel
             // 
@@ -115,9 +119,52 @@
             this.TypeLabel.Text = "Type:";
             this.TypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // aTypeBindingSource
+            // chimeTimeLabel
             // 
-            this.aTypeBindingSource.DataSource = typeof(Androcona.AlarmSettings.aType);
+            this.chimeTimeLabel.AutoSize = true;
+            this.chimeTimeLabel.Location = new System.Drawing.Point(3, 10);
+            this.chimeTimeLabel.Name = "chimeTimeLabel";
+            this.chimeTimeLabel.Size = new System.Drawing.Size(137, 13);
+            this.chimeTimeLabel.TabIndex = 9;
+            this.chimeTimeLabel.Text = "Chime every .......... minutes";
+            // 
+            // chimeEndTimeLabel
+            // 
+            this.chimeEndTimeLabel.AutoSize = true;
+            this.chimeEndTimeLabel.Location = new System.Drawing.Point(3, 35);
+            this.chimeEndTimeLabel.Name = "chimeEndTimeLabel";
+            this.chimeEndTimeLabel.Size = new System.Drawing.Size(28, 13);
+            this.chimeEndTimeLabel.TabIndex = 10;
+            this.chimeEndTimeLabel.Text = "Until";
+            // 
+            // chimeEndTimeTextbox
+            // 
+            this.chimeEndTimeTextbox.Location = new System.Drawing.Point(37, 32);
+            this.chimeEndTimeTextbox.Mask = "00:00";
+            this.chimeEndTimeTextbox.Name = "chimeEndTimeTextbox";
+            this.chimeEndTimeTextbox.Size = new System.Drawing.Size(36, 20);
+            this.chimeEndTimeTextbox.TabIndex = 12;
+            this.chimeEndTimeTextbox.ValidatingType = typeof(System.DateTime);
+            // 
+            // chimePanel
+            // 
+            this.chimePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chimePanel.Controls.Add(this.chimeIntervalTextbox);
+            this.chimePanel.Controls.Add(this.chimeEndTimeTextbox);
+            this.chimePanel.Controls.Add(this.chimeEndTimeLabel);
+            this.chimePanel.Controls.Add(this.chimeTimeLabel);
+            this.chimePanel.Location = new System.Drawing.Point(275, 172);
+            this.chimePanel.Name = "chimePanel";
+            this.chimePanel.Size = new System.Drawing.Size(213, 161);
+            this.chimePanel.TabIndex = 13;
+            // 
+            // chimeIntervalTextbox
+            // 
+            this.chimeIntervalTextbox.Location = new System.Drawing.Point(67, 7);
+            this.chimeIntervalTextbox.Mask = "000";
+            this.chimeIntervalTextbox.Name = "chimeIntervalTextbox";
+            this.chimeIntervalTextbox.Size = new System.Drawing.Size(31, 20);
+            this.chimeIntervalTextbox.TabIndex = 13;
             // 
             // NewTimeEvent
             // 
@@ -125,6 +172,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 352);
+            this.Controls.Add(this.chimePanel);
             this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.TypeCombo);
             this.Controls.Add(this.DescriptionLabel);
@@ -135,7 +183,8 @@
             this.Controls.Add(this.alarmTimePicker);
             this.Name = "NewTimeEvent";
             this.Text = "NewTimeEvent";
-            ((System.ComponentModel.ISupportInitialize)(this.aTypeBindingSource)).EndInit();
+            this.chimePanel.ResumeLayout(false);
+            this.chimePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,7 +200,11 @@
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.Label TypeLabel;
         private System.Windows.Forms.ComboBox TypeCombo;
-        private System.Windows.Forms.BindingSource aTypeBindingSource;
+        private System.Windows.Forms.Label chimeTimeLabel;
+        private System.Windows.Forms.Label chimeEndTimeLabel;
+        private System.Windows.Forms.MaskedTextBox chimeEndTimeTextbox;
+        private System.Windows.Forms.Panel chimePanel;
+        private System.Windows.Forms.MaskedTextBox chimeIntervalTextbox;
 
     }
 }

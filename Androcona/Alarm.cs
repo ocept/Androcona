@@ -14,21 +14,23 @@ namespace Androcona
             alarmSettings = settings;
             alarmInit();
         }
-        public void alarmInit()
+        private void alarmInit()
         {
             try
             {
                 System.Timers.Timer eTimer = new System.Timers.Timer(alarmSettings.time.Subtract(DateTime.Now).TotalMilliseconds);
                 eTimer.Elapsed += new System.Timers.ElapsedEventHandler(eTimer_Elapsed);
+                //eTimer.AutoReset = false;
                 eTimer.Start();
             }
             catch (System.ArgumentException)
             {
+                Console.WriteLine("AlarmInit: invalid time input");
                 return; //invalid time input
             }
         }
         public DateTime AlarmTime { get { return alarmSettings.time; } set{} }
-        private void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        protected virtual void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             System.Windows.Forms.MessageBox.Show("Alarm triggered");
         }
@@ -40,6 +42,15 @@ namespace Androcona
         {
 
         }
-        private DateTime endTime;
+        protected override void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if(alarmSettings.chimeEndTime.CompareTo(DateTime.Now.Subtract(alarmSettings.chimeInterval)) < 0)
+            {
+                base.eTimer_Elapsed(sender, e);
+                System.Timers.Timer eTimer = new System.Timers.Timer(alarmSettings.chimeInterval.TotalMilliseconds);
+                eTimer.Elapsed += new System.Timers.ElapsedEventHandler(eTimer_Elapsed);
+                eTimer.Start();
+            }
+        }
     }
 }

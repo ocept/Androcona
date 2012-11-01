@@ -15,5 +15,7 @@ namespace Androcona
             Chime
         }
         public aType type;
+        public TimeSpan chimeInterval;
+        public DateTime chimeEndTime;
     }
 }

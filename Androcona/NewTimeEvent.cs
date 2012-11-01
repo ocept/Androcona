@@ -16,6 +16,11 @@ namespace Androcona
             InitializeComponent();
             this.TypeCombo.DataSource = Enum.GetValues(typeof(AlarmSettings.aType));
             this.TypeCombo.SelectedIndex = 0;
+
+            chimePanel.Controls.Add(chimeEndTimeLabel);
+            chimePanel.Controls.Add(chimeEndTimeTextbox);
+            chimePanel.Controls.Add(chimeIntervalTextbox);
+            chimePanel.Controls.Add(chimeTimeLabel);
         }
 
         private void SetButton_Click(object sender, EventArgs e)
@@ -25,9 +30,15 @@ namespace Androcona
             aSettings.description = descriptionTextbox.Text;
             aSettings.type = (AlarmSettings.aType)Enum.Parse(typeof(AlarmSettings.aType), TypeCombo.Text);
 
-            if (TypeCombo.SelectedIndex == 0) //Alarm
+            if (TypeCombo.Text == "Alarm")
             {
                 Program.timeEvents.Add(new Alarm(aSettings));
+            }
+            else if (TypeCombo.Text == "Chime")
+            {
+                aSettings.chimeInterval = TimeSpan.FromMinutes(double.Parse(chimeIntervalTextbox.Text));
+                aSettings.chimeEndTime = DateTime.Parse(chimeEndTimeTextbox.Text);
+                Program.timeEvents.Add(new Chime(aSettings));
             }
             Program.TheMainForm.updateDisplay();
             this.Close();
@@ -36,6 +47,18 @@ namespace Androcona
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void TypeCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TypeCombo.Text == "Chime")
+            {
+                chimePanel.Visible = true;
+            }
+            else if (TypeCombo.Text == "Alarm")
+            {
+                chimePanel.Visible = false;
+            }
         }
 
     }
