@@ -33,7 +33,13 @@ namespace Androcona
         public DateTime AlarmTime { get { return alarmSettings.time; } set{} }
         protected virtual void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Alarm triggered");
+            
+            if (alarmSettings.notifyMessageBox) notifyMessageBox();
+        }
+
+        private void notifyMessageBox()
+        {
+            System.Windows.Forms.MessageBox.Show("Alarm triggered:" + alarmSettings.description + " " + alarmSettings.time, "Alarm");
         }
 
     }

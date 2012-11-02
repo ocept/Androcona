@@ -24,6 +24,7 @@ namespace Androcona
             aSettings.time = alarmTimePicker.Value;
             aSettings.description = descriptionTextbox.Text;
             aSettings.type = (AlarmSettings.aType)Enum.Parse(typeof(AlarmSettings.aType), TypeCombo.Text);
+            aSettings.notifyMessageBox = notifyMessageCheck.Checked;
 
             if (TypeCombo.Text == "Alarm")
             {

@@ -17,5 +17,6 @@ namespace Androcona
         public aType type;
         public TimeSpan chimeInterval;
         public DateTime chimeEndTime;
+        public bool notifyMessageBox;
     }
 }
