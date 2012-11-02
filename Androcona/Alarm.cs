@@ -9,18 +9,19 @@ namespace Androcona
     class Alarm
     {
         protected AlarmSettings alarmSettings;
+        protected System.Timers.Timer eTimer;
         public Alarm(AlarmSettings settings)
         {
             alarmSettings = settings;
             alarmInit();
         }
-        private void alarmInit()
+        protected virtual void alarmInit()
         {
             try
             {
-                System.Timers.Timer eTimer = new System.Timers.Timer(alarmSettings.time.Subtract(DateTime.Now).TotalMilliseconds);
+                eTimer = new System.Timers.Timer(alarmSettings.time.Subtract(DateTime.Now).TotalMilliseconds / 5);
                 eTimer.Elapsed += new System.Timers.ElapsedEventHandler(eTimer_Elapsed);
-                //eTimer.AutoReset = false;
+                eTimer.AutoReset = false;
                 eTimer.Start();
             }
             catch (System.ArgumentException)
@@ -42,14 +43,17 @@ namespace Androcona
         {
 
         }
+        protected override void alarmInit()
+        {
+            base.alarmInit();
+            eTimer.AutoReset = true;
+        }
         protected override void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if(alarmSettings.chimeEndTime.CompareTo(DateTime.Now.Subtract(alarmSettings.chimeInterval)) < 0)
+            base.eTimer_Elapsed(sender, e);
+            if (DateTime.Now.Add(alarmSettings.chimeInterval).CompareTo(alarmSettings.chimeEndTime) > 0)
             {
-                base.eTimer_Elapsed(sender, e);
-                System.Timers.Timer eTimer = new System.Timers.Timer(alarmSettings.chimeInterval.TotalMilliseconds);
-                eTimer.Elapsed += new System.Timers.ElapsedEventHandler(eTimer_Elapsed);
-                eTimer.Start();
+                eTimer.Stop();
             }
         }
     }
