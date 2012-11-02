@@ -16,11 +16,6 @@ namespace Androcona
             InitializeComponent();
             this.TypeCombo.DataSource = Enum.GetValues(typeof(AlarmSettings.aType));
             this.TypeCombo.SelectedIndex = 0;
-
-            chimePanel.Controls.Add(chimeEndTimeLabel);
-            chimePanel.Controls.Add(chimeEndTimeTextbox);
-            chimePanel.Controls.Add(chimeIntervalTextbox);
-            chimePanel.Controls.Add(chimeTimeLabel);
         }
 
         private void SetButton_Click(object sender, EventArgs e)

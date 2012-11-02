@@ -41,7 +41,12 @@
             this.chimeEndTimeTextbox = new System.Windows.Forms.MaskedTextBox();
             this.chimePanel = new System.Windows.Forms.Panel();
             this.chimeIntervalTextbox = new System.Windows.Forms.MaskedTextBox();
+            this.notificationGroup = new System.Windows.Forms.GroupBox();
+            this.notifyMessageCheck = new System.Windows.Forms.CheckBox();
+            this.notifySoundCheck = new System.Windows.Forms.CheckBox();
+            this.notifyRunProgramCheck = new System.Windows.Forms.CheckBox();
             this.chimePanel.SuspendLayout();
+            this.notificationGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // alarmTimePicker
@@ -166,12 +171,57 @@
             this.chimeIntervalTextbox.Size = new System.Drawing.Size(31, 20);
             this.chimeIntervalTextbox.TabIndex = 13;
             // 
+            // notificationGroup
+            // 
+            this.notificationGroup.Controls.Add(this.notifyRunProgramCheck);
+            this.notificationGroup.Controls.Add(this.notifySoundCheck);
+            this.notificationGroup.Controls.Add(this.notifyMessageCheck);
+            this.notificationGroup.Location = new System.Drawing.Point(22, 146);
+            this.notificationGroup.Name = "notificationGroup";
+            this.notificationGroup.Size = new System.Drawing.Size(203, 186);
+            this.notificationGroup.TabIndex = 14;
+            this.notificationGroup.TabStop = false;
+            this.notificationGroup.Text = "Notifications";
+            // 
+            // notifyMessageCheck
+            // 
+            this.notifyMessageCheck.AutoSize = true;
+            this.notifyMessageCheck.Checked = true;
+            this.notifyMessageCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.notifyMessageCheck.Location = new System.Drawing.Point(12, 24);
+            this.notifyMessageCheck.Name = "notifyMessageCheck";
+            this.notifyMessageCheck.Size = new System.Drawing.Size(90, 17);
+            this.notifyMessageCheck.TabIndex = 0;
+            this.notifyMessageCheck.Text = "Message Box";
+            this.notifyMessageCheck.UseVisualStyleBackColor = true;
+            // 
+            // notifySoundCheck
+            // 
+            this.notifySoundCheck.AutoSize = true;
+            this.notifySoundCheck.Location = new System.Drawing.Point(12, 47);
+            this.notifySoundCheck.Name = "notifySoundCheck";
+            this.notifySoundCheck.Size = new System.Drawing.Size(57, 17);
+            this.notifySoundCheck.TabIndex = 1;
+            this.notifySoundCheck.Text = "Sound";
+            this.notifySoundCheck.UseVisualStyleBackColor = true;
+            // 
+            // notifyRunProgramCheck
+            // 
+            this.notifyRunProgramCheck.AutoSize = true;
+            this.notifyRunProgramCheck.Location = new System.Drawing.Point(12, 70);
+            this.notifyRunProgramCheck.Name = "notifyRunProgramCheck";
+            this.notifyRunProgramCheck.Size = new System.Drawing.Size(88, 17);
+            this.notifyRunProgramCheck.TabIndex = 2;
+            this.notifyRunProgramCheck.Text = "Run Program";
+            this.notifyRunProgramCheck.UseVisualStyleBackColor = true;
+            // 
             // NewTimeEvent
             // 
             this.AcceptButton = this.SetButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 352);
+            this.Controls.Add(this.notificationGroup);
             this.Controls.Add(this.chimePanel);
             this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.TypeCombo);
@@ -185,6 +235,8 @@
             this.Text = "NewTimeEvent";
             this.chimePanel.ResumeLayout(false);
             this.chimePanel.PerformLayout();
+            this.notificationGroup.ResumeLayout(false);
+            this.notificationGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,6 +257,10 @@
         private System.Windows.Forms.MaskedTextBox chimeEndTimeTextbox;
         private System.Windows.Forms.Panel chimePanel;
         private System.Windows.Forms.MaskedTextBox chimeIntervalTextbox;
+        private System.Windows.Forms.GroupBox notificationGroup;
+        private System.Windows.Forms.CheckBox notifySoundCheck;
+        private System.Windows.Forms.CheckBox notifyMessageCheck;
+        private System.Windows.Forms.CheckBox notifyRunProgramCheck;
 
     }
 }
