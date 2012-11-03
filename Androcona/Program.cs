@@ -15,6 +15,14 @@ namespace Androcona
         [STAThread]
         static void Main()
         {
+            NotifyIcon trayIcon = new NotifyIcon(new System.ComponentModel.Container())
+            {
+                ContextMenuStrip = new ContextMenuStrip(),
+                Text = "Androcona",
+                Icon = new System.Drawing.Icon("testIcon.ico"),
+                Visible = true             
+            };
+
             Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             
