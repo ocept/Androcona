@@ -29,6 +29,7 @@ namespace Androcona
         {
             contextMenu.Items.Add("List Alarms", null, contextMenuListAlarms);
             contextMenu.Items.Add("Set new alarm", null, contextMenuNewAlarm);
+            contextMenu.Items.Add(new ToolStripSeparator());
             contextMenu.Items.Add("Quit", null, contextMenuQuit);
             trayIcon.DoubleClick += new EventHandler(trayIcon_DoubleClick);
         }
