@@ -36,7 +36,7 @@ namespace Androcona
                 aSettings.chimeEndTime = DateTime.Parse(chimeEndTimeTextbox.Text);
                 Program.timeEvents.Add(new Chime(aSettings));
             }
-            Program.TheMainForm.updateDisplay();
+            //Program.TheMainForm.updateDisplay();
             this.Close();
         }
 

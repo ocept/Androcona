@@ -11,22 +11,51 @@ namespace Androcona
         /// The main entry point for the application.
         /// </summary>   
         public static List<Alarm> timeEvents = new List<Alarm>();
-        public static MainForm TheMainForm = new MainForm();
         [STAThread]
         static void Main()
         {
-            NotifyIcon trayIcon = new NotifyIcon(new System.ComponentModel.Container())
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.EnableVisualStyles();
+
+            ApplicationContext trayContext = new trayApplicationContext(); //master controller for program
+            Application.Run(trayContext);
+        }
+    }
+    public class trayApplicationContext: ApplicationContext
+    {
+        static private ContextMenuStrip contextMenu = new ContextMenuStrip();
+        public trayApplicationContext()
+        {
+            contextMenu.Items.Add("List Alarms", null, contextMenuListAlarms);
+            contextMenu.Items.Add("Set new alarm", null, contextMenuNewAlarm);
+            contextMenu.Items.Add("Quit", null, contextMenuQuit);
+            trayIcon.DoubleClick += new EventHandler(trayIcon_DoubleClick);
+        }
+        private NotifyIcon trayIcon = new NotifyIcon(new System.ComponentModel.Container())
             {
-                ContextMenuStrip = new ContextMenuStrip(),
+                ContextMenuStrip = contextMenu,
                 Text = "Androcona",
                 Icon = new System.Drawing.Icon("testIcon.ico"),
-                Visible = true             
+                Visible = true
             };
-
-            Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            
-            Application.Run(TheMainForm);
+        private void contextMenuListAlarms(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
+        }
+        private void contextMenuNewAlarm(object sender, EventArgs e)
+        {
+            NewTimeEvent newAlarm = new NewTimeEvent();
+            newAlarm.Show();
+        }
+        private void contextMenuQuit(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void trayIcon_DoubleClick(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
         }
     }
 }
