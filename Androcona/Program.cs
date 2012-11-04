@@ -24,6 +24,7 @@ namespace Androcona
     public class trayApplicationContext: ApplicationContext
     {
         static private ContextMenuStrip contextMenu = new ContextMenuStrip();
+        private MainForm mainForm;
         public trayApplicationContext()
         {
             contextMenu.Items.Add("List Alarms", null, contextMenuListAlarms);
@@ -31,6 +32,7 @@ namespace Androcona
             contextMenu.Items.Add("Quit", null, contextMenuQuit);
             trayIcon.DoubleClick += new EventHandler(trayIcon_DoubleClick);
         }
+
         private NotifyIcon trayIcon = new NotifyIcon(new System.ComponentModel.Container())
             {
                 ContextMenuStrip = contextMenu,
@@ -40,22 +42,37 @@ namespace Androcona
             };
         private void contextMenuListAlarms(object sender, EventArgs e)
         {
-            MainForm mainForm = new MainForm();
-            mainForm.Show();
+            launchMainForm();
         }
+
         private void contextMenuNewAlarm(object sender, EventArgs e)
         {
             NewTimeEvent newAlarm = new NewTimeEvent();
             newAlarm.Show();
         }
+
         private void contextMenuQuit(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         private void trayIcon_DoubleClick(object sender, EventArgs e)
         {
-            MainForm mainForm = new MainForm();
-            mainForm.Show();
+            launchMainForm();
+        }
+        private void launchMainForm() //launches form if not already open
+        {
+            if (mainForm == null)
+            {
+                mainForm = new MainForm();
+                mainForm.Show();
+                mainForm.FormClosed += new FormClosedEventHandler(mainForm_FormClosed); //make form null when closed
+            }
+            else mainForm.Activate();
+        }
+        void mainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            mainForm = null;
         }
     }
 }
