@@ -11,6 +11,9 @@ namespace Androcona
 {
     public partial class NewTimeEvent : Form
     {
+        public delegate void newAlarmSetHandler(object NewTimeEvent, EventArgs e);
+        public event newAlarmSetHandler newAlarmSet;
+
         public NewTimeEvent()
         {
             InitializeComponent();
@@ -37,6 +40,10 @@ namespace Androcona
                 Program.timeEvents.Add(new Chime(aSettings));
             }
             //Program.TheMainForm.updateDisplay();
+            if (newAlarmSet != null)
+            {
+                newAlarmSet(this, EventArgs.Empty);
+            }
             this.Close();
         }
 

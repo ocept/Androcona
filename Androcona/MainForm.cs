@@ -14,6 +14,7 @@ namespace Androcona
         public MainForm()
         {
             InitializeComponent();
+            updateDisplay();
         }
 
         public void updateDisplay()
@@ -30,6 +31,12 @@ namespace Androcona
         {
             NewTimeEvent nt = new NewTimeEvent();
             nt.Show();
+            nt.newAlarmSet += new NewTimeEvent.newAlarmSetHandler(nt_newAlarmSet);
+        }
+
+        void nt_newAlarmSet(object NewTimeEvent, EventArgs e)
+        {
+            updateDisplay();
         }
     }
 }
