@@ -14,10 +14,11 @@ namespace Androcona
         public MainForm()
         {
             InitializeComponent();
-            updateDisplay();
+            updateDisplay(this, EventArgs.Empty);
+            Program.timeEvents.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(updateDisplay);
         }
 
-        public void updateDisplay()
+        public void updateDisplay(object sender, EventArgs e)
         {
             timeEventsListView.Items.Clear();
             foreach (Alarm al in Program.timeEvents)
@@ -31,12 +32,7 @@ namespace Androcona
         {
             NewTimeEvent nt = new NewTimeEvent();
             nt.Show();
-            nt.newAlarmSet += new NewTimeEvent.newAlarmSetHandler(nt_newAlarmSet);
         }
 
-        void nt_newAlarmSet(object NewTimeEvent, EventArgs e)
-        {
-            updateDisplay();
-        }
     }
 }

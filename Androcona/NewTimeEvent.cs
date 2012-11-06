@@ -39,7 +39,6 @@ namespace Androcona
                 aSettings.chimeEndTime = DateTime.Parse(chimeEndTimeTextbox.Text);
                 Program.timeEvents.Add(new Chime(aSettings));
             }
-            //Program.TheMainForm.updateDisplay();
             if (newAlarmSet != null)
             {
                 newAlarmSet(this, EventArgs.Empty);

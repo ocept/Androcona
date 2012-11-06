@@ -10,7 +10,7 @@ namespace Androcona
         /// <summary>
         /// The main entry point for the application.
         /// </summary>   
-        public static List<Alarm> timeEvents = new List<Alarm>();
+        public static System.Collections.ObjectModel.ObservableCollection<Alarm> timeEvents = new System.Collections.ObjectModel.ObservableCollection<Alarm>();
         [STAThread]
         static void Main()
         {
