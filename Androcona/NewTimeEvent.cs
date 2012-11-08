@@ -43,6 +43,7 @@ namespace Androcona
             {
                 newAlarmSet(this, EventArgs.Empty);
             }
+            saveAlarms.writeAlarms();
             this.Close();
         }
 

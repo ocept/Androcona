@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Androcona
 {
@@ -19,6 +20,19 @@ namespace Androcona
 
             ApplicationContext trayContext = new trayApplicationContext(); //master controller for program
             Application.Run(trayContext);
+        }
+    }
+    public static class saveAlarms
+    {
+        public static void writeAlarms()
+        {
+            string alarmFile = Directory.GetCurrentDirectory()+@"\alarms.txt";
+            List<String> alarmLines = new List<string>();
+            foreach (Alarm a in Program.timeEvents)
+            {
+                alarmLines.Add(a.ToString());
+            }
+            File.WriteAllLines(alarmFile, alarmLines.ToArray());
         }
     }
     public class trayApplicationContext: ApplicationContext
