@@ -7,16 +7,16 @@ namespace Androcona
 {
     class AlarmSettings
     {
-        public DateTime time;
-        public string description;
+        public aType type;
         public enum aType
         {
             Alarm,
             Chime
         }
-        public aType type;
+        public DateTime time;
+        public string description;
+        public bool notifyMessageBox;
         public TimeSpan chimeInterval;
         public DateTime chimeEndTime;
-        public bool notifyMessageBox;
     }
 }

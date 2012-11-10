@@ -30,7 +30,8 @@ namespace Androcona
             List<String> alarmLines = new List<string>();
             foreach (Alarm a in Program.timeEvents)
             {
-                alarmLines.Add(a.ToString());
+                alarmLines.AddRange(a.toStringArray());
+                
             }
             File.WriteAllLines(alarmFile, alarmLines.ToArray());
         }

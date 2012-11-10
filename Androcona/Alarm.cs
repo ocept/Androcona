@@ -30,6 +30,18 @@ namespace Androcona
                 return; //invalid time input
             }
         }
+
+        public string[] toStringArray()
+        {
+            List<String> outLines = new List<string>();
+            outLines.Add("type=" + alarmSettings.type);
+            outLines.Add("time=" + alarmSettings.time.ToBinary().ToString());
+            outLines.Add("description=" + alarmSettings.description);
+            outLines.Add("notifyMessageBox=" + alarmSettings.notifyMessageBox.ToString());
+
+            return outLines.ToArray();
+        }
+
         public DateTime AlarmTime { get { return alarmSettings.time; } set{} }
         protected virtual void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
