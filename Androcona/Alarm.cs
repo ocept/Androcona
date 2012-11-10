@@ -31,7 +31,7 @@ namespace Androcona
             }
         }
 
-        public string[] toStringArray()
+        public virtual string[] toStringArray()
         {
             List<String> outLines = new List<string>();
             outLines.Add("BEGIN save");
@@ -75,6 +75,14 @@ namespace Androcona
             {
                 eTimer.Stop();
             }
+        }
+        public override string[] toStringArray()
+        {
+            List<String> outLines = new List<string>();
+            outLines.AddRange(base.toStringArray());
+            outLines.Insert(outLines.Count - 1, "chimeInterval="+alarmSettings.chimeInterval.ToString());
+            outLines.Insert(outLines.Count - 1, "chimeEndTime="+alarmSettings.chimeEndTime.ToBinary());
+            return outLines.ToArray();
         }
     }
 }

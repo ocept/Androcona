@@ -67,6 +67,12 @@ namespace Androcona
                     case "notifyMessageBox":
                         a.notifyMessageBox = bool.Parse(split[1]);
                         break;
+                    case "chimeInterval":
+                        a.chimeInterval = TimeSpan.Parse(split[1]);
+                        break;
+                    case "chimeEndTime":
+                        a.chimeEndTime = DateTime.FromBinary(long.Parse(split[1]));
+                        break;
                     default:
                         break;
                 }
