@@ -18,8 +18,60 @@ namespace Androcona
             Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
 
+            loadAlarms.readAlarms();
+
             ApplicationContext trayContext = new trayApplicationContext(); //master controller for program
             Application.Run(trayContext);
+            
+        }
+    }
+    public static class loadAlarms
+    {
+        static char[] nameValueSeparators = new char[] { '=', ':'};
+        public static void readAlarms()
+        {
+            string alarmFile = Directory.GetCurrentDirectory() + @"\alarms.txt";
+            if (File.Exists(alarmFile))
+            {
+                string[] fileLines = File.ReadAllLines(alarmFile);
+                parseSaves(fileLines);
+            }
+        }
+        private static void parseSaves(string[] fileLines)
+        {
+            for(int i = 0; i < fileLines.Length; i++)
+            {
+                if (fileLines[i] == "BEGIN save")
+                    parseSave(fileLines, i);
+            }
+
+        }
+        private static void parseSave(string[] fileLines, int n) //TODO: exception handling, validation
+        {
+            AlarmSettings a = new AlarmSettings();
+            for (int i = n+1; i < fileLines.Length; i++) //parse each line, ignoring BEGIN
+            {
+                if (fileLines[i] == "END") break; //end of save
+                string[] split = fileLines[i].Split(nameValueSeparators, 2);
+                switch (split[0])
+                {
+                    case "type":
+                        a.type = (AlarmSettings.aType) Enum.Parse(typeof(AlarmSettings.aType), split[1]);
+                        break;
+                    case "time":
+                        a.time = DateTime.FromBinary(long.Parse(split[1]));
+                        break;
+                    case "description":
+                        a.description = split[1];
+                        break;
+                    case "notifyMessageBox":
+                        a.notifyMessageBox = bool.Parse(split[1]);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            Program.timeEvents.Add(new Alarm(a));
         }
     }
     public static class saveAlarms

@@ -34,10 +34,12 @@ namespace Androcona
         public string[] toStringArray()
         {
             List<String> outLines = new List<string>();
+            outLines.Add("BEGIN save");
             outLines.Add("type=" + alarmSettings.type);
             outLines.Add("time=" + alarmSettings.time.ToBinary().ToString());
             outLines.Add("description=" + alarmSettings.description);
             outLines.Add("notifyMessageBox=" + alarmSettings.notifyMessageBox.ToString());
+            outLines.Add("END");
 
             return outLines.ToArray();
         }
