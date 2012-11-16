@@ -45,6 +45,8 @@ namespace Androcona
         }
 
         public DateTime AlarmTime { get { return alarmSettings.time; } set{} }
+        public AlarmSettings.aType AlarmType { get { return alarmSettings.type; } set { } }
+        public string AlarmDescription { get { return alarmSettings.description; } set { } }
         protected virtual void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             
@@ -76,6 +78,8 @@ namespace Androcona
                 eTimer.Stop();
             }
         }
+        public TimeSpan ChimeInterval { get { return alarmSettings.chimeInterval; } set { } }
+        public DateTime ChimeEndTime { get { return alarmSettings.chimeEndTime; } set { } }
         public override string[] toStringArray()
         {
             List<String> outLines = new List<string>();

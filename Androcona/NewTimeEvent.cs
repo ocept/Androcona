@@ -21,7 +21,7 @@ namespace Androcona
             this.TypeCombo.SelectedIndex = 0;
         }
 
-        private void SetButton_Click(object sender, EventArgs e)
+        protected virtual void SetButton_Click(object sender, EventArgs e)
         {
             AlarmSettings aSettings = new AlarmSettings();
             aSettings.time = alarmTimePicker.Value;

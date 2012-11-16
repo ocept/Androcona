@@ -42,9 +42,9 @@
             this.chimePanel = new System.Windows.Forms.Panel();
             this.chimeIntervalTextbox = new System.Windows.Forms.MaskedTextBox();
             this.notificationGroup = new System.Windows.Forms.GroupBox();
-            this.notifyMessageCheck = new System.Windows.Forms.CheckBox();
-            this.notifySoundCheck = new System.Windows.Forms.CheckBox();
             this.notifyRunProgramCheck = new System.Windows.Forms.CheckBox();
+            this.notifySoundCheck = new System.Windows.Forms.CheckBox();
+            this.notifyMessageCheck = new System.Windows.Forms.CheckBox();
             this.chimePanel.SuspendLayout();
             this.notificationGroup.SuspendLayout();
             this.SuspendLayout();
@@ -183,17 +183,15 @@
             this.notificationGroup.TabStop = false;
             this.notificationGroup.Text = "Notifications";
             // 
-            // notifyMessageCheck
+            // notifyRunProgramCheck
             // 
-            this.notifyMessageCheck.AutoSize = true;
-            this.notifyMessageCheck.Checked = true;
-            this.notifyMessageCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.notifyMessageCheck.Location = new System.Drawing.Point(12, 24);
-            this.notifyMessageCheck.Name = "notifyMessageCheck";
-            this.notifyMessageCheck.Size = new System.Drawing.Size(90, 17);
-            this.notifyMessageCheck.TabIndex = 0;
-            this.notifyMessageCheck.Text = "Message Box";
-            this.notifyMessageCheck.UseVisualStyleBackColor = true;
+            this.notifyRunProgramCheck.AutoSize = true;
+            this.notifyRunProgramCheck.Location = new System.Drawing.Point(12, 70);
+            this.notifyRunProgramCheck.Name = "notifyRunProgramCheck";
+            this.notifyRunProgramCheck.Size = new System.Drawing.Size(88, 17);
+            this.notifyRunProgramCheck.TabIndex = 2;
+            this.notifyRunProgramCheck.Text = "Run Program";
+            this.notifyRunProgramCheck.UseVisualStyleBackColor = true;
             // 
             // notifySoundCheck
             // 
@@ -205,15 +203,17 @@
             this.notifySoundCheck.Text = "Sound";
             this.notifySoundCheck.UseVisualStyleBackColor = true;
             // 
-            // notifyRunProgramCheck
+            // notifyMessageCheck
             // 
-            this.notifyRunProgramCheck.AutoSize = true;
-            this.notifyRunProgramCheck.Location = new System.Drawing.Point(12, 70);
-            this.notifyRunProgramCheck.Name = "notifyRunProgramCheck";
-            this.notifyRunProgramCheck.Size = new System.Drawing.Size(88, 17);
-            this.notifyRunProgramCheck.TabIndex = 2;
-            this.notifyRunProgramCheck.Text = "Run Program";
-            this.notifyRunProgramCheck.UseVisualStyleBackColor = true;
+            this.notifyMessageCheck.AutoSize = true;
+            this.notifyMessageCheck.Checked = true;
+            this.notifyMessageCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.notifyMessageCheck.Location = new System.Drawing.Point(12, 24);
+            this.notifyMessageCheck.Name = "notifyMessageCheck";
+            this.notifyMessageCheck.Size = new System.Drawing.Size(90, 17);
+            this.notifyMessageCheck.TabIndex = 0;
+            this.notifyMessageCheck.Text = "Message Box";
+            this.notifyMessageCheck.UseVisualStyleBackColor = true;
             // 
             // NewTimeEvent
             // 
@@ -244,23 +244,23 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker alarmTimePicker;
         private System.Windows.Forms.Button SetButton;
         private System.Windows.Forms.Button _CancelButton;
         private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.TextBox descriptionTextbox;
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.Label TypeLabel;
-        private System.Windows.Forms.ComboBox TypeCombo;
         private System.Windows.Forms.Label chimeTimeLabel;
         private System.Windows.Forms.Label chimeEndTimeLabel;
-        private System.Windows.Forms.MaskedTextBox chimeEndTimeTextbox;
-        private System.Windows.Forms.Panel chimePanel;
-        private System.Windows.Forms.MaskedTextBox chimeIntervalTextbox;
-        private System.Windows.Forms.GroupBox notificationGroup;
         private System.Windows.Forms.CheckBox notifySoundCheck;
         private System.Windows.Forms.CheckBox notifyMessageCheck;
         private System.Windows.Forms.CheckBox notifyRunProgramCheck;
+        protected System.Windows.Forms.ComboBox TypeCombo;
+        protected System.Windows.Forms.DateTimePicker alarmTimePicker;
+        protected System.Windows.Forms.TextBox descriptionTextbox;
+        protected System.Windows.Forms.Panel chimePanel;
+        protected System.Windows.Forms.GroupBox notificationGroup;
+        protected System.Windows.Forms.MaskedTextBox chimeEndTimeTextbox;
+        protected System.Windows.Forms.MaskedTextBox chimeIntervalTextbox;
 
     }
 }

@@ -53,6 +53,12 @@
   <ItemGroup>
     <Compile Include="Alarm.cs" />
     <Compile Include="AlarmSettings.cs" />
+    <Compile Include="editAlarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editAlarm.Designer.cs">
+      <DependentUpon>editAlarm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
