@@ -16,15 +16,35 @@ namespace Androcona
             InitializeComponent();
             updateDisplay(this, EventArgs.Empty);
             Program.timeEvents.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(updateDisplay);
+
+            ContextMenuStrip alarmContextMenu = new ContextMenuStrip();
+            alarmContextMenu.Items.Add("Delete alarm", null, contextMenuDeleteAlarm);
+            timeEventsListView.ContextMenuStrip = alarmContextMenu;
+            alarmContextMenu.Opening += new CancelEventHandler(alarmContextMenu_Opening);
+        }
+
+        void alarmContextMenu_Opening(object sender, CancelEventArgs e) //do not show context menu if none selected
+        {
+            if (timeEventsListView.SelectedItems.Count == 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void contextMenuDeleteAlarm(object sender, EventArgs e)
+        {
+            Program.timeEvents.RemoveAt((int)timeEventsListView.SelectedItems[0].Tag); //remove alarm
+            saveAlarms.writeAlarms(); //update save file
         }
 
         public void updateDisplay(object sender, EventArgs e)
         {
             timeEventsListView.Items.Clear();
-            foreach (Alarm al in Program.timeEvents)
+            for(int i = 0; i < Program.timeEvents.Count; i++)
             {
-                ListViewItem item = new ListViewItem(al.ToString());
-                item.SubItems.Add(al.AlarmTime.ToLongTimeString());
+                ListViewItem item = new ListViewItem(Program.timeEvents[i].ToString());
+                item.Tag = i;
+                item.SubItems.Add(Program.timeEvents[i].AlarmTime.ToLongTimeString());
                 timeEventsListView.Items.Add(item);
             }
         }

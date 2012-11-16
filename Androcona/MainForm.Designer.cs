@@ -49,6 +49,7 @@
             this.timeEventsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.TypeColumn,
             this.TimeColumn});
+            this.timeEventsListView.FullRowSelect = true;
             this.timeEventsListView.Location = new System.Drawing.Point(12, 57);
             this.timeEventsListView.Name = "timeEventsListView";
             this.timeEventsListView.Size = new System.Drawing.Size(480, 338);

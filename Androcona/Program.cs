@@ -77,7 +77,10 @@ namespace Androcona
                         break;
                 }
             }
-            Program.timeEvents.Add(new Alarm(a));
+            if(a.type == AlarmSettings.aType.Alarm)
+                Program.timeEvents.Add(new Alarm(a));
+            else if(a.type == AlarmSettings.aType.Chime)
+                Program.timeEvents.Add(new Chime(a));
         }
     }
     public static class saveAlarms
