@@ -17,11 +17,23 @@ namespace Androcona
             updateDisplay(this, EventArgs.Empty);
             Program.timeEvents.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(updateDisplay);
 
+            //setup context menu for listview
             ContextMenuStrip alarmContextMenu = new ContextMenuStrip();
             alarmContextMenu.Items.Add("Edit alarm", null, contextMenuEditAlarm);
             alarmContextMenu.Items.Add("Delete alarm", null, contextMenuDeleteAlarm);
             timeEventsListView.ContextMenuStrip = alarmContextMenu;
             alarmContextMenu.Opening += new CancelEventHandler(alarmContextMenu_Opening);
+            timeEventsListView.DoubleClick += new EventHandler(timeEventsListView_DoubleClick);
+
+        }
+
+        void timeEventsListView_DoubleClick(object sender, EventArgs e)
+        {
+            if (timeEventsListView.SelectedItems.Count > 0)
+            {
+                editAlarm editForm = new editAlarm((int)timeEventsListView.SelectedItems[0].Tag);
+                editForm.Show();
+            }
         }
 
         void alarmContextMenu_Opening(object sender, CancelEventArgs e) //do not show context menu if none selected
