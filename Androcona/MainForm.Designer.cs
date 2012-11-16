@@ -32,6 +32,7 @@
             this.timeEventsListView = new System.Windows.Forms.ListView();
             this.TypeColumn = new System.Windows.Forms.ColumnHeader();
             this.TimeColumn = new System.Windows.Forms.ColumnHeader();
+            this.DescriptionColumn = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // NewTimeEventButton
@@ -48,7 +49,8 @@
             // 
             this.timeEventsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.TypeColumn,
-            this.TimeColumn});
+            this.TimeColumn,
+            this.DescriptionColumn});
             this.timeEventsListView.FullRowSelect = true;
             this.timeEventsListView.Location = new System.Drawing.Point(12, 57);
             this.timeEventsListView.Name = "timeEventsListView";
@@ -66,6 +68,11 @@
             // 
             this.TimeColumn.Text = "Time";
             this.TimeColumn.Width = 90;
+            // 
+            // DescriptionColumn
+            // 
+            this.DescriptionColumn.Text = "Description";
+            this.DescriptionColumn.Width = 98;
             // 
             // MainForm
             // 
@@ -86,6 +93,7 @@
         private System.Windows.Forms.ListView timeEventsListView;
         private System.Windows.Forms.ColumnHeader TimeColumn;
         private System.Windows.Forms.ColumnHeader TypeColumn;
+        private System.Windows.Forms.ColumnHeader DescriptionColumn;
     }
 }
 

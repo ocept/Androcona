@@ -63,6 +63,7 @@ namespace Androcona
                 ListViewItem item = new ListViewItem(Program.timeEvents[i].ToString());
                 item.Tag = i;
                 item.SubItems.Add(Program.timeEvents[i].AlarmTime.ToLongTimeString());
+                item.SubItems.Add(Program.timeEvents[i].AlarmDescription);
                 timeEventsListView.Items.Add(item);
             }
         }
