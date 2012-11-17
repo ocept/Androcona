@@ -15,7 +15,7 @@ namespace Androcona
             alarmSettings = settings;
             alarmInit();
         }
-        protected virtual void alarmInit()
+        protected virtual int alarmInit()
         {
             try
             {
@@ -27,8 +27,9 @@ namespace Androcona
             catch (System.ArgumentException)
             {
                 Console.WriteLine("AlarmInit: invalid time input");
-                return; //invalid time input
+                return 0; //invalid time input
             }
+            return 1;
         }
 
         public virtual string[] toStringArray()
@@ -65,10 +66,17 @@ namespace Androcona
         {
 
         }
-        protected override void alarmInit()
+        protected override int alarmInit()
         {
-            base.alarmInit();
-            eTimer.AutoReset = true;
+            if (base.alarmInit() == 1)
+            {
+                eTimer.AutoReset = true; //timer restarts after triggering
+                return 1;
+            }
+            else
+            {
+                return 0; //base init failed, exit
+            }
         }
         protected override void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
