@@ -54,8 +54,22 @@ namespace Androcona
         public bool SoundSet { get { return alarmSettings.playSound; } set { } }
         protected virtual void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            
+            if (alarmSettings.playSound) playSound();
             if (alarmSettings.notifyMessageBox) notifyMessageBox();
+
+        }
+
+        private void playSound()
+        {
+            try
+            {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(alarmSettings.soundPath);
+                player.Play();
+            }
+            catch
+            {
+                Console.WriteLine("error playing sound file: " + alarmSettings.soundPath);
+            }
         }
 
         private void notifyMessageBox()
