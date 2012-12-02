@@ -40,6 +40,8 @@ namespace Androcona
             outLines.Add("time=" + alarmSettings.time.ToBinary().ToString());
             outLines.Add("description=" + alarmSettings.description);
             outLines.Add("notifyMessageBox=" + alarmSettings.notifyMessageBox.ToString());
+            outLines.Add("playSound=" + alarmSettings.playSound.ToString());
+            if(alarmSettings.soundPath != null) outLines.Add("soundPath=" + alarmSettings.soundPath.ToString());
             outLines.Add("END");
 
             return outLines.ToArray();

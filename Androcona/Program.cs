@@ -73,6 +73,12 @@ namespace Androcona
                     case "chimeEndTime":
                         a.chimeEndTime = DateTime.FromBinary(long.Parse(split[1]));
                         break;
+                    case "playSound":
+                        a.playSound = bool.Parse(split[1]);
+                        break;
+                    case "soundPath":
+                        a.soundPath = split[1];
+                        break;
                     default:
                         break;
                 }
