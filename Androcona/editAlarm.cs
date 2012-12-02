@@ -29,6 +29,13 @@ namespace Androcona
             }
             alarmTimePicker.Value = alarm.AlarmTime;
             descriptionTextbox.Text = alarm.AlarmDescription;
+            if (alarm.SoundSet)
+            {
+                notifySoundCheck.Checked = true;
+                soundFile snd = new soundFile(alarm.SoundPath);
+                soundComboList.Items.Add(snd);
+                soundComboList.SelectedIndex = soundComboList.Items.Count - 1;
+            }
 
         }
         protected override void SetButton_Click(object sender, EventArgs e)

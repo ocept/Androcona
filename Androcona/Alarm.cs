@@ -48,6 +48,8 @@ namespace Androcona
         public DateTime AlarmTime { get { return alarmSettings.time; } set{} }
         public AlarmSettings.aType AlarmType { get { return alarmSettings.type; } set { } }
         public string AlarmDescription { get { return alarmSettings.description; } set { } }
+        public string SoundPath { get { return alarmSettings.soundPath; } set { } }
+        public bool SoundSet { get { return alarmSettings.playSound; } set { } }
         protected virtual void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             

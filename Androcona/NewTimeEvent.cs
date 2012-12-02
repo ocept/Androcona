@@ -12,7 +12,7 @@ namespace Androcona
 {
     public partial class NewTimeEvent : Form
     {
-        private struct soundFile //stores a soundfile path and shows only filename on form display
+        protected struct soundFile //stores a soundfile path and shows only filename on form display
         {
             public string soundPath;
             public soundFile(string path)

@@ -262,9 +262,6 @@
         private System.Windows.Forms.Label TypeLabel;
         private System.Windows.Forms.Label chimeTimeLabel;
         private System.Windows.Forms.Label chimeEndTimeLabel;
-        private System.Windows.Forms.CheckBox notifySoundCheck;
-        private System.Windows.Forms.CheckBox notifyMessageCheck;
-        private System.Windows.Forms.CheckBox notifyRunProgramCheck;
         protected System.Windows.Forms.ComboBox TypeCombo;
         protected System.Windows.Forms.DateTimePicker alarmTimePicker;
         protected System.Windows.Forms.TextBox descriptionTextbox;
@@ -272,7 +269,10 @@
         protected System.Windows.Forms.GroupBox notificationGroup;
         protected System.Windows.Forms.MaskedTextBox chimeEndTimeTextbox;
         protected System.Windows.Forms.MaskedTextBox chimeIntervalTextbox;
-        private System.Windows.Forms.ComboBox soundComboList;
+        protected System.Windows.Forms.CheckBox notifySoundCheck;
+        protected System.Windows.Forms.CheckBox notifyMessageCheck;
+        protected System.Windows.Forms.CheckBox notifyRunProgramCheck;
+        protected System.Windows.Forms.ComboBox soundComboList;
 
     }
 }
