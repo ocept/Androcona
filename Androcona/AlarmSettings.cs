@@ -18,5 +18,7 @@ namespace Androcona
         public bool notifyMessageBox;
         public TimeSpan chimeInterval;
         public DateTime chimeEndTime;
+        public string soundPath;
+        public bool playSound;
     }
 }

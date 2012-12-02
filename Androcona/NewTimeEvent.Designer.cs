@@ -42,6 +42,7 @@
             this.chimePanel = new System.Windows.Forms.Panel();
             this.chimeIntervalTextbox = new System.Windows.Forms.MaskedTextBox();
             this.notificationGroup = new System.Windows.Forms.GroupBox();
+            this.soundComboList = new System.Windows.Forms.ComboBox();
             this.notifyRunProgramCheck = new System.Windows.Forms.CheckBox();
             this.notifySoundCheck = new System.Windows.Forms.CheckBox();
             this.notifyMessageCheck = new System.Windows.Forms.CheckBox();
@@ -173,6 +174,7 @@
             // 
             // notificationGroup
             // 
+            this.notificationGroup.Controls.Add(this.soundComboList);
             this.notificationGroup.Controls.Add(this.notifyRunProgramCheck);
             this.notificationGroup.Controls.Add(this.notifySoundCheck);
             this.notificationGroup.Controls.Add(this.notifyMessageCheck);
@@ -182,6 +184,15 @@
             this.notificationGroup.TabIndex = 14;
             this.notificationGroup.TabStop = false;
             this.notificationGroup.Text = "Notifications";
+            // 
+            // soundComboList
+            // 
+            this.soundComboList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.soundComboList.FormattingEnabled = true;
+            this.soundComboList.Location = new System.Drawing.Point(69, 45);
+            this.soundComboList.Name = "soundComboList";
+            this.soundComboList.Size = new System.Drawing.Size(128, 21);
+            this.soundComboList.TabIndex = 3;
             // 
             // notifyRunProgramCheck
             // 
@@ -261,6 +272,7 @@
         protected System.Windows.Forms.GroupBox notificationGroup;
         protected System.Windows.Forms.MaskedTextBox chimeEndTimeTextbox;
         protected System.Windows.Forms.MaskedTextBox chimeIntervalTextbox;
+        private System.Windows.Forms.ComboBox soundComboList;
 
     }
 }
