@@ -19,7 +19,7 @@ namespace Androcona
         {
             try
             {
-                eTimer = new System.Timers.Timer(alarmSettings.time.Subtract(DateTime.Now).TotalMilliseconds / 5);
+                eTimer = new System.Timers.Timer(alarmSettings.time.Subtract(DateTime.Now).TotalMilliseconds);
                 eTimer.Elapsed += new System.Timers.ElapsedEventHandler(eTimer_Elapsed);
                 eTimer.AutoReset = false;
                 eTimer.Start();
@@ -52,13 +52,20 @@ namespace Androcona
         public string AlarmDescription { get { return alarmSettings.description; } set { } }
         public string SoundPath { get { return alarmSettings.soundPath; } set { } }
         public bool SoundSet { get { return alarmSettings.playSound; } set { } }
+
         protected virtual void eTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            alarmTriggered();
+        }
+#if DEBUG
+        public void alarmTriggered()
+#else
+        private void alarmTriggered()
+#endif
         {
             if (alarmSettings.playSound) playSound();
             if (alarmSettings.notifyMessageBox) notifyMessageBox();
-
         }
-
         private void playSound()
         {
             try

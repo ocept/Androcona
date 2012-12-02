@@ -21,6 +21,9 @@ namespace Androcona
             ContextMenuStrip alarmContextMenu = new ContextMenuStrip();
             alarmContextMenu.Items.Add("Edit alarm", null, contextMenuEditAlarm);
             alarmContextMenu.Items.Add("Delete alarm", null, contextMenuDeleteAlarm);
+#if DEBUG   
+            alarmContextMenu.Items.Add("Trigger Alarm", null, contextMenuTriggerAlarm); 
+#endif
             timeEventsListView.ContextMenuStrip = alarmContextMenu;
             alarmContextMenu.Opening += new CancelEventHandler(alarmContextMenu_Opening);
             timeEventsListView.DoubleClick += new EventHandler(timeEventsListView_DoubleClick);
@@ -43,7 +46,12 @@ namespace Androcona
                 e.Cancel = true;
             }
         }
-
+#if DEBUG
+        private void contextMenuTriggerAlarm(object sender, EventArgs e)
+        {
+            Program.timeEvents[(int)timeEventsListView.SelectedItems[0].Tag].alarmTriggered();
+        }
+#endif
         private void contextMenuEditAlarm(object sender, EventArgs e)
         {
             editAlarm editForm = new editAlarm((int)timeEventsListView.SelectedItems[0].Tag);
