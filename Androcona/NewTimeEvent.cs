@@ -45,6 +45,7 @@ namespace Androcona
         }
         protected virtual void SetButton_Click(object sender, EventArgs e)
         {
+            //get selected settings for alarm
             AlarmSettings aSettings = new AlarmSettings();
             aSettings.time = alarmTimePicker.Value;
             aSettings.description = descriptionTextbox.Text;
@@ -65,7 +66,32 @@ namespace Androcona
                 aSettings.chimeEndTime = DateTime.Parse(chimeEndTimeTextbox.Text);
                 Program.timeEvents.Add(new Chime(aSettings));
             }
-            if (newAlarmSet != null)
+            if (repeatCheck.Checked)
+            {
+                aSettings.repeat = true;
+                switch (repeatFreqCombo.SelectedText)
+                {
+                    case("Every Day"):
+                    case("Every Weekday"):
+                    case("Every Week"): aSettings.repeatFreq = AlarmSettings.repeatFreqEnum.Weekly;
+                        break;
+                    case("Every Fortnight"): aSettings.repeatFreq = AlarmSettings.repeatFreqEnum.Fortnightly;
+                        break;
+                    case ("Every Month"): aSettings.repeatFreq = AlarmSettings.repeatFreqEnum.Monthly;
+                        break;
+                    default:
+                        Console.WriteLine("NewTimeEvent invalid repeat freq selection");
+                        break;
+                }
+                aSettings.repeatDays[0] = dayMon.Checked;
+                aSettings.repeatDays[1] = dayTue.Checked;
+                aSettings.repeatDays[2] = dayWed.Checked;
+                aSettings.repeatDays[3] = dayThu.Checked;
+                aSettings.repeatDays[4] = dayFri.Checked;
+                aSettings.repeatDays[5] = daySat.Checked;
+                aSettings.repeatDays[6] = daySun.Checked;
+            }
+            if (newAlarmSet != null) //invoke event
             {
                 newAlarmSet(this, EventArgs.Empty);
             }

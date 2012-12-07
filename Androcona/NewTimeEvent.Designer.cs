@@ -39,15 +39,28 @@
             this.chimeTimeLabel = new System.Windows.Forms.Label();
             this.chimeEndTimeLabel = new System.Windows.Forms.Label();
             this.chimeEndTimeTextbox = new System.Windows.Forms.MaskedTextBox();
-            this.chimePanel = new System.Windows.Forms.Panel();
             this.chimeIntervalTextbox = new System.Windows.Forms.MaskedTextBox();
             this.notificationGroup = new System.Windows.Forms.GroupBox();
             this.soundComboList = new System.Windows.Forms.ComboBox();
             this.notifyRunProgramCheck = new System.Windows.Forms.CheckBox();
             this.notifySoundCheck = new System.Windows.Forms.CheckBox();
             this.notifyMessageCheck = new System.Windows.Forms.CheckBox();
-            this.chimePanel.SuspendLayout();
+            this.chimePanel = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.repeatCheck = new System.Windows.Forms.CheckBox();
+            this.repeatFreqCombo = new System.Windows.Forms.ComboBox();
+            this.dayMon = new System.Windows.Forms.CheckBox();
+            this.dayTue = new System.Windows.Forms.CheckBox();
+            this.dayWed = new System.Windows.Forms.CheckBox();
+            this.dayThu = new System.Windows.Forms.CheckBox();
+            this.dayFri = new System.Windows.Forms.CheckBox();
+            this.daySat = new System.Windows.Forms.CheckBox();
+            this.daySun = new System.Windows.Forms.CheckBox();
+            this.dayCheckPanel = new System.Windows.Forms.Panel();
             this.notificationGroup.SuspendLayout();
+            this.chimePanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.dayCheckPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // alarmTimePicker
@@ -128,7 +141,7 @@
             // chimeTimeLabel
             // 
             this.chimeTimeLabel.AutoSize = true;
-            this.chimeTimeLabel.Location = new System.Drawing.Point(3, 10);
+            this.chimeTimeLabel.Location = new System.Drawing.Point(3, 3);
             this.chimeTimeLabel.Name = "chimeTimeLabel";
             this.chimeTimeLabel.Size = new System.Drawing.Size(137, 13);
             this.chimeTimeLabel.TabIndex = 9;
@@ -137,7 +150,7 @@
             // chimeEndTimeLabel
             // 
             this.chimeEndTimeLabel.AutoSize = true;
-            this.chimeEndTimeLabel.Location = new System.Drawing.Point(3, 35);
+            this.chimeEndTimeLabel.Location = new System.Drawing.Point(3, 28);
             this.chimeEndTimeLabel.Name = "chimeEndTimeLabel";
             this.chimeEndTimeLabel.Size = new System.Drawing.Size(28, 13);
             this.chimeEndTimeLabel.TabIndex = 10;
@@ -145,28 +158,16 @@
             // 
             // chimeEndTimeTextbox
             // 
-            this.chimeEndTimeTextbox.Location = new System.Drawing.Point(37, 32);
+            this.chimeEndTimeTextbox.Location = new System.Drawing.Point(37, 25);
             this.chimeEndTimeTextbox.Mask = "00:00";
             this.chimeEndTimeTextbox.Name = "chimeEndTimeTextbox";
             this.chimeEndTimeTextbox.Size = new System.Drawing.Size(36, 20);
             this.chimeEndTimeTextbox.TabIndex = 12;
             this.chimeEndTimeTextbox.ValidatingType = typeof(System.DateTime);
             // 
-            // chimePanel
-            // 
-            this.chimePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chimePanel.Controls.Add(this.chimeIntervalTextbox);
-            this.chimePanel.Controls.Add(this.chimeEndTimeTextbox);
-            this.chimePanel.Controls.Add(this.chimeEndTimeLabel);
-            this.chimePanel.Controls.Add(this.chimeTimeLabel);
-            this.chimePanel.Location = new System.Drawing.Point(275, 172);
-            this.chimePanel.Name = "chimePanel";
-            this.chimePanel.Size = new System.Drawing.Size(213, 161);
-            this.chimePanel.TabIndex = 13;
-            // 
             // chimeIntervalTextbox
             // 
-            this.chimeIntervalTextbox.Location = new System.Drawing.Point(67, 7);
+            this.chimeIntervalTextbox.Location = new System.Drawing.Point(67, 0);
             this.chimeIntervalTextbox.Mask = "000";
             this.chimeIntervalTextbox.Name = "chimeIntervalTextbox";
             this.chimeIntervalTextbox.Size = new System.Drawing.Size(31, 20);
@@ -226,14 +227,151 @@
             this.notifyMessageCheck.Text = "Message Box";
             this.notifyMessageCheck.UseVisualStyleBackColor = true;
             // 
+            // chimePanel
+            // 
+            this.chimePanel.AutoSize = true;
+            this.chimePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.chimePanel.Controls.Add(this.chimeIntervalTextbox);
+            this.chimePanel.Controls.Add(this.chimeTimeLabel);
+            this.chimePanel.Controls.Add(this.chimeEndTimeLabel);
+            this.chimePanel.Controls.Add(this.chimeEndTimeTextbox);
+            this.chimePanel.Location = new System.Drawing.Point(25, 112);
+            this.chimePanel.Name = "chimePanel";
+            this.chimePanel.Size = new System.Drawing.Size(143, 48);
+            this.chimePanel.TabIndex = 13;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dayCheckPanel);
+            this.groupBox1.Controls.Add(this.repeatFreqCombo);
+            this.groupBox1.Controls.Add(this.repeatCheck);
+            this.groupBox1.Controls.Add(this.chimePanel);
+            this.groupBox1.Location = new System.Drawing.Point(252, 146);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(244, 185);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Repeat";
+            // 
+            // repeatCheck
+            // 
+            this.repeatCheck.AutoSize = true;
+            this.repeatCheck.Location = new System.Drawing.Point(17, 24);
+            this.repeatCheck.Name = "repeatCheck";
+            this.repeatCheck.Size = new System.Drawing.Size(61, 17);
+            this.repeatCheck.TabIndex = 14;
+            this.repeatCheck.Text = "Repeat";
+            this.repeatCheck.UseVisualStyleBackColor = true;
+            // 
+            // repeatFreqCombo
+            // 
+            this.repeatFreqCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.repeatFreqCombo.FormattingEnabled = true;
+            this.repeatFreqCombo.Items.AddRange(new object[] {
+            "Every Day",
+            "Every Weekday",
+            "Every Week",
+            "Every Fortnight",
+            "Every Month"});
+            this.repeatFreqCombo.Location = new System.Drawing.Point(83, 22);
+            this.repeatFreqCombo.Name = "repeatFreqCombo";
+            this.repeatFreqCombo.Size = new System.Drawing.Size(146, 21);
+            this.repeatFreqCombo.TabIndex = 15;
+            // 
+            // dayMon
+            // 
+            this.dayMon.AutoSize = true;
+            this.dayMon.Location = new System.Drawing.Point(3, 9);
+            this.dayMon.Name = "dayMon";
+            this.dayMon.Size = new System.Drawing.Size(47, 17);
+            this.dayMon.TabIndex = 16;
+            this.dayMon.Text = "Mon";
+            this.dayMon.UseVisualStyleBackColor = true;
+            // 
+            // dayTue
+            // 
+            this.dayTue.AutoSize = true;
+            this.dayTue.Location = new System.Drawing.Point(50, 9);
+            this.dayTue.Name = "dayTue";
+            this.dayTue.Size = new System.Drawing.Size(45, 17);
+            this.dayTue.TabIndex = 17;
+            this.dayTue.Text = "Tue";
+            this.dayTue.UseVisualStyleBackColor = true;
+            // 
+            // dayWed
+            // 
+            this.dayWed.AutoSize = true;
+            this.dayWed.Location = new System.Drawing.Point(95, 9);
+            this.dayWed.Name = "dayWed";
+            this.dayWed.Size = new System.Drawing.Size(49, 17);
+            this.dayWed.TabIndex = 18;
+            this.dayWed.Text = "Wed";
+            this.dayWed.UseVisualStyleBackColor = true;
+            // 
+            // dayThu
+            // 
+            this.dayThu.AutoSize = true;
+            this.dayThu.Location = new System.Drawing.Point(144, 9);
+            this.dayThu.Name = "dayThu";
+            this.dayThu.Size = new System.Drawing.Size(45, 17);
+            this.dayThu.TabIndex = 19;
+            this.dayThu.Text = "Thu";
+            this.dayThu.UseVisualStyleBackColor = true;
+            // 
+            // dayFri
+            // 
+            this.dayFri.AutoSize = true;
+            this.dayFri.Location = new System.Drawing.Point(189, 9);
+            this.dayFri.Name = "dayFri";
+            this.dayFri.Size = new System.Drawing.Size(37, 17);
+            this.dayFri.TabIndex = 20;
+            this.dayFri.Text = "Fri";
+            this.dayFri.UseVisualStyleBackColor = true;
+            // 
+            // daySat
+            // 
+            this.daySat.AutoSize = true;
+            this.daySat.Location = new System.Drawing.Point(3, 30);
+            this.daySat.Name = "daySat";
+            this.daySat.Size = new System.Drawing.Size(42, 17);
+            this.daySat.TabIndex = 21;
+            this.daySat.Text = "Sat";
+            this.daySat.UseVisualStyleBackColor = true;
+            // 
+            // daySun
+            // 
+            this.daySun.AutoSize = true;
+            this.daySun.Location = new System.Drawing.Point(50, 30);
+            this.daySun.Name = "daySun";
+            this.daySun.Size = new System.Drawing.Size(45, 17);
+            this.daySun.TabIndex = 22;
+            this.daySun.Text = "Sun";
+            this.daySun.UseVisualStyleBackColor = true;
+            // 
+            // dayCheckPanel
+            // 
+            this.dayCheckPanel.AutoSize = true;
+            this.dayCheckPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.dayCheckPanel.Controls.Add(this.daySun);
+            this.dayCheckPanel.Controls.Add(this.dayMon);
+            this.dayCheckPanel.Controls.Add(this.daySat);
+            this.dayCheckPanel.Controls.Add(this.dayTue);
+            this.dayCheckPanel.Controls.Add(this.dayFri);
+            this.dayCheckPanel.Controls.Add(this.dayWed);
+            this.dayCheckPanel.Controls.Add(this.dayThu);
+            this.dayCheckPanel.Location = new System.Drawing.Point(15, 45);
+            this.dayCheckPanel.Name = "dayCheckPanel";
+            this.dayCheckPanel.Size = new System.Drawing.Size(229, 50);
+            this.dayCheckPanel.TabIndex = 16;
+            // 
             // NewTimeEvent
             // 
             this.AcceptButton = this.SetButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 352);
+            this.ClientSize = new System.Drawing.Size(508, 352);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.notificationGroup);
-            this.Controls.Add(this.chimePanel);
             this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.TypeCombo);
             this.Controls.Add(this.DescriptionLabel);
@@ -244,10 +382,14 @@
             this.Controls.Add(this.alarmTimePicker);
             this.Name = "NewTimeEvent";
             this.Text = "NewTimeEvent";
-            this.chimePanel.ResumeLayout(false);
-            this.chimePanel.PerformLayout();
             this.notificationGroup.ResumeLayout(false);
             this.notificationGroup.PerformLayout();
+            this.chimePanel.ResumeLayout(false);
+            this.chimePanel.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.dayCheckPanel.ResumeLayout(false);
+            this.dayCheckPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,7 +407,6 @@
         protected System.Windows.Forms.ComboBox TypeCombo;
         protected System.Windows.Forms.DateTimePicker alarmTimePicker;
         protected System.Windows.Forms.TextBox descriptionTextbox;
-        protected System.Windows.Forms.Panel chimePanel;
         protected System.Windows.Forms.GroupBox notificationGroup;
         protected System.Windows.Forms.MaskedTextBox chimeEndTimeTextbox;
         protected System.Windows.Forms.MaskedTextBox chimeIntervalTextbox;
@@ -273,6 +414,18 @@
         protected System.Windows.Forms.CheckBox notifyMessageCheck;
         protected System.Windows.Forms.CheckBox notifyRunProgramCheck;
         protected System.Windows.Forms.ComboBox soundComboList;
+        protected System.Windows.Forms.Panel chimePanel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox repeatCheck;
+        private System.Windows.Forms.CheckBox daySat;
+        private System.Windows.Forms.CheckBox dayFri;
+        private System.Windows.Forms.CheckBox dayThu;
+        private System.Windows.Forms.CheckBox dayWed;
+        private System.Windows.Forms.CheckBox dayTue;
+        private System.Windows.Forms.CheckBox dayMon;
+        private System.Windows.Forms.ComboBox repeatFreqCombo;
+        private System.Windows.Forms.Panel dayCheckPanel;
+        private System.Windows.Forms.CheckBox daySun;
 
     }
 }
