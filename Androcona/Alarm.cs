@@ -17,6 +17,44 @@ namespace Androcona
         }
         protected virtual int alarmInit()
         {
+            if (alarmSettings.time.Subtract(DateTime.Now).TotalMilliseconds <= 0) //alarm time is in past
+            {
+                return setRepeatAlarm();
+            }
+            return startTimer();
+          
+        }
+        private int setRepeatAlarm()
+        {
+            if (!alarmSettings.repeat)
+            {
+                Console.WriteLine("Repeat attempt on non repeat alarm");
+                return 0;
+            }
+            if (alarmSettings.repeatFreq == AlarmSettings.repeatFreqEnum.Monthly)
+            {
+                alarmSettings.time = alarmSettings.time.AddMonths(1);
+                //Timer not restarted due to interval being > the max value 
+                //TODO: run daily check on alarms and start if due within 24hrs
+            }
+            else if (alarmSettings.repeatFreq == AlarmSettings.repeatFreqEnum.Weekly || 
+                (alarmSettings.repeatFreq == AlarmSettings.repeatFreqEnum.Fortnightly && alarmSettings.time.AddDays(7).CompareTo(DateTime.Now) < 0))
+            {
+                if (alarmSettings.time.TimeOfDay.CompareTo(DateTime.Now.TimeOfDay) > 0) //if alarm is later in day than current time
+                {
+                    if (alarmSettings.repeatDays[(int)DateTime.Now.DayOfWeek - 1]) //if alarm is set for today
+                    {
+                        alarmSettings.time = DateTime.Today.Add(alarmSettings.time.TimeOfDay);
+                        startTimer();
+                    }
+                }
+            }
+
+
+            return 1;
+        }
+        private int startTimer()
+        {
             try
             {
                 eTimer = new System.Timers.Timer(alarmSettings.time.Subtract(DateTime.Now).TotalMilliseconds);
@@ -27,11 +65,10 @@ namespace Androcona
             catch (System.ArgumentException)
             {
                 Console.WriteLine("AlarmInit: invalid time input");
-                return 0; //invalid time input
+                return 0;
             }
             return 1;
         }
-
         public virtual string[] toStringArray()
         {
             List<String> outLines = new List<string>();

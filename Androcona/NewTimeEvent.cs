@@ -56,20 +56,10 @@ namespace Androcona
                 aSettings.playSound = notifySoundCheck.Checked;
                 aSettings.soundPath = ((soundFile)soundComboList.SelectedItem).soundPath;
             }
-            if (TypeCombo.Text == "Alarm")
-            {
-                Program.timeEvents.Add(new Alarm(aSettings));
-            }
-            else if (TypeCombo.Text == "Chime")
-            {
-                aSettings.chimeInterval = TimeSpan.FromMinutes(double.Parse(chimeIntervalTextbox.Text));
-                aSettings.chimeEndTime = DateTime.Parse(chimeEndTimeTextbox.Text);
-                Program.timeEvents.Add(new Chime(aSettings));
-            }
             if (repeatCheck.Checked)
             {
                 aSettings.repeat = true;
-                switch (repeatFreqCombo.SelectedText)
+                switch (repeatFreqCombo.Text)
                 {
                     case("Every Day"):
                     case("Every Weekday"):
@@ -90,6 +80,17 @@ namespace Androcona
                 aSettings.repeatDays[4] = dayFri.Checked;
                 aSettings.repeatDays[5] = daySat.Checked;
                 aSettings.repeatDays[6] = daySun.Checked;
+            }
+            //create and store alarm
+            if (TypeCombo.Text == "Alarm")
+            {
+                Program.timeEvents.Add(new Alarm(aSettings));
+            }
+            else if (TypeCombo.Text == "Chime")
+            {
+                aSettings.chimeInterval = TimeSpan.FromMinutes(double.Parse(chimeIntervalTextbox.Text));
+                aSettings.chimeEndTime = DateTime.Parse(chimeEndTimeTextbox.Text);
+                Program.timeEvents.Add(new Chime(aSettings));
             }
             if (newAlarmSet != null) //invoke event
             {
