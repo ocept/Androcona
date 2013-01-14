@@ -17,7 +17,7 @@ namespace Androcona
             InitializeComponent();
             importAlarmData(Program.timeEvents[alarmIndex]);
         }
-        private void importAlarmData(Alarm alarm)
+        private void importAlarmData(Alarm alarm) //populates form with stored alarm values
         {
             if(alarm.AlarmType == AlarmSettings.aType.Alarm)
                 TypeCombo.SelectedIndex = 0;
@@ -29,13 +29,17 @@ namespace Androcona
             }
             alarmTimePicker.Value = alarm.AlarmTime;
             descriptionTextbox.Text = alarm.AlarmDescription;
-            if (alarm.SoundSet)
+
+            if (alarm.SoundSet) //sound
             {
                 notifySoundCheck.Checked = true;
                 soundFile snd = new soundFile(alarm.SoundPath);
                 soundComboList.Items.Add(snd);
                 soundComboList.SelectedIndex = soundComboList.Items.Count - 1;
             }
+
+            //repeats
+
 
         }
         protected override void SetButton_Click(object sender, EventArgs e)

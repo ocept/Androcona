@@ -117,5 +117,80 @@ namespace Androcona
             }
         }
 
+        private void repeatFreqCombo_SelectedIndexChanged(object sender, EventArgs e) //update UI for selected option
+        {
+            if (repeatFreqCombo.Text == "Every Day")
+            {
+                foreach(CheckBox c in dayCheckPanel.Controls)
+                {
+                    c.Enabled = false;
+                    c.Checked = true;
+                }
+            }
+            else if (repeatFreqCombo.Text == "Every Weekday")
+            {
+                foreach (CheckBox c in dayCheckPanel.Controls)
+                {
+                    if (c.Name == "daySat" || c.Name == "daySun")
+                    {
+                        c.Enabled = false;
+                        c.Checked = false;
+                    }
+                    else
+                    {
+                        c.Enabled = false;
+                        c.Checked = true;
+                    }
+                } 
+            }
+            else if (repeatFreqCombo.Text == "Every Week")
+            {
+                foreach (CheckBox c in dayCheckPanel.Controls) //enable all day checkboxes, check only today
+                {
+                    c.Enabled = true;
+                    try
+                    {
+                        if (Int16.Parse((string)c.Tag) == (int)DateTime.Now.DayOfWeek)
+                            c.Checked = true;
+                        else
+                            c.Checked = false;
+                    }
+                    catch (System.FormatException) 
+                    {
+                        Console.WriteLine("Failed to parse day check box tag");
+                    }
+                }
+            }
+            else if (repeatFreqCombo.Text == "Every Fortnight")
+            {
+                foreach (CheckBox c in dayCheckPanel.Controls) //enable all day checkboxes, check only today
+                {
+                    c.Enabled = true;
+                    try
+                    {
+                        if (Int16.Parse((string)c.Tag) == (int)DateTime.Now.DayOfWeek)
+                            c.Checked = true;
+                        else
+                            c.Checked = false;
+                    }
+                    catch (System.FormatException)
+                    {
+                        Console.WriteLine("Failed to parse day check box tag");
+                    }
+                }
+            }
+            else if (repeatFreqCombo.Text == "Every Month")
+            {
+                foreach (CheckBox c in dayCheckPanel.Controls)
+                {
+                    c.Enabled = false;
+                    c.Checked = false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Failed to read repeat interval combo box");
+            }
+        }
     }
 }

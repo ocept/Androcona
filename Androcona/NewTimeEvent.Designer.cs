@@ -47,16 +47,16 @@
             this.notifyMessageCheck = new System.Windows.Forms.CheckBox();
             this.chimePanel = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.repeatCheck = new System.Windows.Forms.CheckBox();
-            this.repeatFreqCombo = new System.Windows.Forms.ComboBox();
+            this.dayCheckPanel = new System.Windows.Forms.Panel();
+            this.daySun = new System.Windows.Forms.CheckBox();
             this.dayMon = new System.Windows.Forms.CheckBox();
+            this.daySat = new System.Windows.Forms.CheckBox();
             this.dayTue = new System.Windows.Forms.CheckBox();
+            this.dayFri = new System.Windows.Forms.CheckBox();
             this.dayWed = new System.Windows.Forms.CheckBox();
             this.dayThu = new System.Windows.Forms.CheckBox();
-            this.dayFri = new System.Windows.Forms.CheckBox();
-            this.daySat = new System.Windows.Forms.CheckBox();
-            this.daySun = new System.Windows.Forms.CheckBox();
-            this.dayCheckPanel = new System.Windows.Forms.Panel();
+            this.repeatFreqCombo = new System.Windows.Forms.ComboBox();
+            this.repeatCheck = new System.Windows.Forms.CheckBox();
             this.notificationGroup.SuspendLayout();
             this.chimePanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -235,7 +235,7 @@
             this.chimePanel.Controls.Add(this.chimeTimeLabel);
             this.chimePanel.Controls.Add(this.chimeEndTimeLabel);
             this.chimePanel.Controls.Add(this.chimeEndTimeTextbox);
-            this.chimePanel.Location = new System.Drawing.Point(25, 112);
+            this.chimePanel.Location = new System.Drawing.Point(15, 101);
             this.chimePanel.Name = "chimePanel";
             this.chimePanel.Size = new System.Drawing.Size(143, 48);
             this.chimePanel.TabIndex = 13;
@@ -253,101 +253,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Repeat";
             // 
-            // repeatCheck
-            // 
-            this.repeatCheck.AutoSize = true;
-            this.repeatCheck.Location = new System.Drawing.Point(17, 24);
-            this.repeatCheck.Name = "repeatCheck";
-            this.repeatCheck.Size = new System.Drawing.Size(61, 17);
-            this.repeatCheck.TabIndex = 14;
-            this.repeatCheck.Text = "Repeat";
-            this.repeatCheck.UseVisualStyleBackColor = true;
-            // 
-            // repeatFreqCombo
-            // 
-            this.repeatFreqCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.repeatFreqCombo.FormattingEnabled = true;
-            this.repeatFreqCombo.Items.AddRange(new object[] {
-            "Every Day",
-            "Every Weekday",
-            "Every Week",
-            "Every Fortnight",
-            "Every Month"});
-            this.repeatFreqCombo.Location = new System.Drawing.Point(83, 22);
-            this.repeatFreqCombo.Name = "repeatFreqCombo";
-            this.repeatFreqCombo.Size = new System.Drawing.Size(146, 21);
-            this.repeatFreqCombo.TabIndex = 15;
-            // 
-            // dayMon
-            // 
-            this.dayMon.AutoSize = true;
-            this.dayMon.Location = new System.Drawing.Point(3, 9);
-            this.dayMon.Name = "dayMon";
-            this.dayMon.Size = new System.Drawing.Size(47, 17);
-            this.dayMon.TabIndex = 16;
-            this.dayMon.Text = "Mon";
-            this.dayMon.UseVisualStyleBackColor = true;
-            // 
-            // dayTue
-            // 
-            this.dayTue.AutoSize = true;
-            this.dayTue.Location = new System.Drawing.Point(50, 9);
-            this.dayTue.Name = "dayTue";
-            this.dayTue.Size = new System.Drawing.Size(45, 17);
-            this.dayTue.TabIndex = 17;
-            this.dayTue.Text = "Tue";
-            this.dayTue.UseVisualStyleBackColor = true;
-            // 
-            // dayWed
-            // 
-            this.dayWed.AutoSize = true;
-            this.dayWed.Location = new System.Drawing.Point(95, 9);
-            this.dayWed.Name = "dayWed";
-            this.dayWed.Size = new System.Drawing.Size(49, 17);
-            this.dayWed.TabIndex = 18;
-            this.dayWed.Text = "Wed";
-            this.dayWed.UseVisualStyleBackColor = true;
-            // 
-            // dayThu
-            // 
-            this.dayThu.AutoSize = true;
-            this.dayThu.Location = new System.Drawing.Point(144, 9);
-            this.dayThu.Name = "dayThu";
-            this.dayThu.Size = new System.Drawing.Size(45, 17);
-            this.dayThu.TabIndex = 19;
-            this.dayThu.Text = "Thu";
-            this.dayThu.UseVisualStyleBackColor = true;
-            // 
-            // dayFri
-            // 
-            this.dayFri.AutoSize = true;
-            this.dayFri.Location = new System.Drawing.Point(189, 9);
-            this.dayFri.Name = "dayFri";
-            this.dayFri.Size = new System.Drawing.Size(37, 17);
-            this.dayFri.TabIndex = 20;
-            this.dayFri.Text = "Fri";
-            this.dayFri.UseVisualStyleBackColor = true;
-            // 
-            // daySat
-            // 
-            this.daySat.AutoSize = true;
-            this.daySat.Location = new System.Drawing.Point(3, 30);
-            this.daySat.Name = "daySat";
-            this.daySat.Size = new System.Drawing.Size(42, 17);
-            this.daySat.TabIndex = 21;
-            this.daySat.Text = "Sat";
-            this.daySat.UseVisualStyleBackColor = true;
-            // 
-            // daySun
-            // 
-            this.daySun.AutoSize = true;
-            this.daySun.Location = new System.Drawing.Point(50, 30);
-            this.daySun.Name = "daySun";
-            this.daySun.Size = new System.Drawing.Size(45, 17);
-            this.daySun.TabIndex = 22;
-            this.daySun.Text = "Sun";
-            this.daySun.UseVisualStyleBackColor = true;
-            // 
             // dayCheckPanel
             // 
             this.dayCheckPanel.AutoSize = true;
@@ -363,6 +268,109 @@
             this.dayCheckPanel.Name = "dayCheckPanel";
             this.dayCheckPanel.Size = new System.Drawing.Size(229, 50);
             this.dayCheckPanel.TabIndex = 16;
+            // 
+            // daySun
+            // 
+            this.daySun.AutoSize = true;
+            this.daySun.Location = new System.Drawing.Point(50, 30);
+            this.daySun.Name = "daySun";
+            this.daySun.Size = new System.Drawing.Size(45, 17);
+            this.daySun.TabIndex = 22;
+            this.daySun.Tag = "0";
+            this.daySun.Text = "Sun";
+            this.daySun.UseVisualStyleBackColor = true;
+            // 
+            // dayMon
+            // 
+            this.dayMon.AutoSize = true;
+            this.dayMon.Location = new System.Drawing.Point(3, 9);
+            this.dayMon.Name = "dayMon";
+            this.dayMon.Size = new System.Drawing.Size(47, 17);
+            this.dayMon.TabIndex = 16;
+            this.dayMon.Tag = "1";
+            this.dayMon.Text = "Mon";
+            this.dayMon.UseVisualStyleBackColor = true;
+            // 
+            // daySat
+            // 
+            this.daySat.AutoSize = true;
+            this.daySat.Location = new System.Drawing.Point(3, 30);
+            this.daySat.Name = "daySat";
+            this.daySat.Size = new System.Drawing.Size(42, 17);
+            this.daySat.TabIndex = 21;
+            this.daySat.Tag = "6";
+            this.daySat.Text = "Sat";
+            this.daySat.UseVisualStyleBackColor = true;
+            // 
+            // dayTue
+            // 
+            this.dayTue.AutoSize = true;
+            this.dayTue.Location = new System.Drawing.Point(50, 9);
+            this.dayTue.Name = "dayTue";
+            this.dayTue.Size = new System.Drawing.Size(45, 17);
+            this.dayTue.TabIndex = 17;
+            this.dayTue.Tag = "2";
+            this.dayTue.Text = "Tue";
+            this.dayTue.UseVisualStyleBackColor = true;
+            // 
+            // dayFri
+            // 
+            this.dayFri.AutoSize = true;
+            this.dayFri.Location = new System.Drawing.Point(189, 9);
+            this.dayFri.Name = "dayFri";
+            this.dayFri.Size = new System.Drawing.Size(37, 17);
+            this.dayFri.TabIndex = 20;
+            this.dayFri.Tag = "5";
+            this.dayFri.Text = "Fri";
+            this.dayFri.UseVisualStyleBackColor = true;
+            // 
+            // dayWed
+            // 
+            this.dayWed.AutoSize = true;
+            this.dayWed.Location = new System.Drawing.Point(95, 9);
+            this.dayWed.Name = "dayWed";
+            this.dayWed.Size = new System.Drawing.Size(49, 17);
+            this.dayWed.TabIndex = 18;
+            this.dayWed.Tag = "3";
+            this.dayWed.Text = "Wed";
+            this.dayWed.UseVisualStyleBackColor = true;
+            // 
+            // dayThu
+            // 
+            this.dayThu.AutoSize = true;
+            this.dayThu.Location = new System.Drawing.Point(144, 9);
+            this.dayThu.Name = "dayThu";
+            this.dayThu.Size = new System.Drawing.Size(45, 17);
+            this.dayThu.TabIndex = 19;
+            this.dayThu.Tag = "4";
+            this.dayThu.Text = "Thu";
+            this.dayThu.UseVisualStyleBackColor = true;
+            // 
+            // repeatFreqCombo
+            // 
+            this.repeatFreqCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.repeatFreqCombo.FormattingEnabled = true;
+            this.repeatFreqCombo.Items.AddRange(new object[] {
+            "Every Day",
+            "Every Weekday",
+            "Every Week",
+            "Every Fortnight",
+            "Every Month"});
+            this.repeatFreqCombo.Location = new System.Drawing.Point(83, 22);
+            this.repeatFreqCombo.Name = "repeatFreqCombo";
+            this.repeatFreqCombo.Size = new System.Drawing.Size(146, 21);
+            this.repeatFreqCombo.TabIndex = 15;
+            this.repeatFreqCombo.SelectedIndexChanged += new System.EventHandler(this.repeatFreqCombo_SelectedIndexChanged);
+            // 
+            // repeatCheck
+            // 
+            this.repeatCheck.AutoSize = true;
+            this.repeatCheck.Location = new System.Drawing.Point(17, 24);
+            this.repeatCheck.Name = "repeatCheck";
+            this.repeatCheck.Size = new System.Drawing.Size(61, 17);
+            this.repeatCheck.TabIndex = 14;
+            this.repeatCheck.Text = "Repeat";
+            this.repeatCheck.UseVisualStyleBackColor = true;
             // 
             // NewTimeEvent
             // 
